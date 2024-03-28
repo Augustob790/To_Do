@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../controller/home_page_controller.dart';
 import 'custom_button.dart';
 
-class AddNewPeriodButton extends StatelessWidget {
-  const AddNewPeriodButton({super.key, required this.controller, required this.onTap});
+class AddNewTaskButton extends StatelessWidget {
+  const AddNewTaskButton({super.key, required this.controller, required this.onTap});
 
   final HomePageController controller;
   final dynamic Function() onTap;

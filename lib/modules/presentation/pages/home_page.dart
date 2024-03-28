@@ -73,7 +73,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
                     task: tasks,
                     onTap: () async {
                       controller.titleController.text = tasks.title;
-                      InfoNewPeriodClass().init(
+                      InfoNewTaskClass().init(
                         context: context,
                         controller: controller,
                         task: tasks,
@@ -90,7 +90,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
       floatingActionButton: AddNewTaskButton(
         onTap: () async {
           controller.inicialize();
-          AddNewPeriodClass()
+          AddNewTaskClass()
               .init(context: context, controller: controller, bloc: bloc);
         },
       ),

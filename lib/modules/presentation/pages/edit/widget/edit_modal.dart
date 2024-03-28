@@ -10,17 +10,17 @@ import '../../../widgets/dropdown.dart';
 import '../../../widgets/input_personalized.dart';
 import '../../../widgets/manrope.dart';
 
-class EditNewPeriod extends StatefulWidget {
-  const EditNewPeriod({super.key, required this.controller, required this.add});
+class EditNewTask extends StatefulWidget {
+  const EditNewTask({super.key, required this.controller, required this.add});
 
   final HomePageController controller;
   final dynamic Function() add;
 
   @override
-  State<EditNewPeriod> createState() => _EditNewTaskState();
+  State<EditNewTask> createState() => _EditNewTaskState();
 }
 
-class _EditNewTaskState extends State<EditNewPeriod> {
+class _EditNewTaskState extends State<EditNewTask> {
   @override
   Widget build(BuildContext context) {
     return _buildAddProductsModal(context);

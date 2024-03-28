@@ -2,20 +2,20 @@ import '../../data/repositories/task_repository.dart';
 import '../exception/task_exception.dart';
 import '../model/task.dart';
 
-abstract class UpdatePeriodUsecase {
+abstract class UpdateTaskUsecase {
   Future<void> call(Task task);
 }
 
-class UpdatePeriodUsecaseImpl implements UpdatePeriodUsecase {
+class UpdateTaskUsecaseImpl implements UpdateTaskUsecase {
   final TaskRepository repository;
 
-  UpdatePeriodUsecaseImpl({required this.repository});
+  UpdateTaskUsecaseImpl({required this.repository});
 
   @override
   Future<void> call(Task task) async {
     try {
-      return repository.updatePeriod(task);
-    } on PeriodException {
+      return repository.updateTask(task);
+    } on TaskException {
       rethrow;
     }
   }

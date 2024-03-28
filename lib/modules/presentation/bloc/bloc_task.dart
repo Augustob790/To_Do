@@ -13,15 +13,15 @@ class TaskFlutterBloc extends Bloc<TaskEvents, TaskState> {
     }));
 
     on<AddTaskEvents>(((event, emit) async {
-      emit(TasksAddSucessState(task: repository.addPeriod(event.task)));
+      emit(TasksAddSucessState(task: repository.addTask(event.task)));
     }));
 
     on<UpdateTaskEvents>(((event, emit) {
-      emit(TasksUpdateSucessState(task: repository.updatePeriod(event.task)));
+      emit(TasksUpdateSucessState(task: repository.updateTask(event.task)));
     }));
 
     on<DeleteTaskEvents>(((event, emit) {
-      emit(TasksDeleteSucessState(id: repository.deletePeriod(event.id)));
+      emit(TasksDeleteSucessState(id: repository.deleteTask(event.id)));
     }));
   }
 }

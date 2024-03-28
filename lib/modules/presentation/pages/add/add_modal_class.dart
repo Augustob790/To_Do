@@ -7,11 +7,11 @@ import '../../bloc/task_events.dart';
 import '../../controller/home_page_controller.dart';
 import 'widget/add_modal.dart';
 
-class AddNewPeriodClass {
+class AddNewTaskClass {
   init({
     required BuildContext context,
     required HomePageController controller,
-    //required PeriodBloc bloc,
+    //required TaskBloc bloc,
     required TaskFlutterBloc bloc,
   }) async {
     await showDialog(
@@ -21,7 +21,7 @@ class AddNewPeriodClass {
           scrollable: true,
           backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           contentPadding: const EdgeInsets.all(0),
-          content: AddNewPeriod(
+          content: AddNewTask(
               controller: controller,
               add: () async {
                 if (controller.titleController.text.isNotEmpty &&

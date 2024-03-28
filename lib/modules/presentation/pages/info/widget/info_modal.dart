@@ -5,8 +5,8 @@ import '../../../controller/home_page_controller.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/manrope.dart';
 
-class InfoPeriod extends StatefulWidget {
-  const InfoPeriod(
+class InfoTask extends StatefulWidget {
+  const InfoTask(
       {super.key,
       required this.controller,
       required this.excluir,
@@ -18,10 +18,10 @@ class InfoPeriod extends StatefulWidget {
   final dynamic Function() editar;
 
   @override
-  State<InfoPeriod> createState() => _InfoTaskState();
+  State<InfoTask> createState() => _InfoTaskState();
 }
 
-class _InfoTaskState extends State<InfoPeriod> {
+class _InfoTaskState extends State<InfoTask> {
   @override
   Widget build(BuildContext context) {
     return _buildAddProductsModal(context);

@@ -7,16 +7,16 @@ import '../../domain/usecases/insert_task.dart';
 import '../../domain/usecases/update_task.dart';
 
 class HomePageController extends ChangeNotifier {
-  final GetAllPeriodUsecase getAllPeriodUsecase;
-  final DeletePeriodUsecase deletePeriodUsecase;
-  final InsertPeriodUsecase insertPeriodUsecase;
-  final UpdatePeriodUsecase updatePeriodUsecase;
+  final GetAllTaskUsecase getAllTaskUsecase;
+  final DeleteTaskUsecase deleteTaskUsecase;
+  final InsertTaskUsecase insertTaskUsecase;
+  final UpdateTaskUsecase updateTaskUsecase;
 
   HomePageController({
-    required this.getAllPeriodUsecase,
-    required this.deletePeriodUsecase,
-    required this.insertPeriodUsecase,
-    required this.updatePeriodUsecase,
+    required this.getAllTaskUsecase,
+    required this.deleteTaskUsecase,
+    required this.insertTaskUsecase,
+    required this.updateTaskUsecase,
   });
 
   final TextEditingController titleController = TextEditingController();
@@ -36,7 +36,7 @@ class HomePageController extends ChangeNotifier {
     'Categoria 5',
     'Categoria 6',
   ];
-  List<Task> periods = [];
+  List<Task> Tasks = [];
 
   inicialize() {
     titleController.text = "";
@@ -64,7 +64,7 @@ class HomePageController extends ChangeNotifier {
 
   insert(Task task) async {
     try {
-      await insertPeriodUsecase(task);
+      await insertTaskUsecase(task);
     } catch (e) {
       throw e.toString();
     }
@@ -73,7 +73,7 @@ class HomePageController extends ChangeNotifier {
 
   getAllTaks() async {
     try {
-      periods = await getAllPeriodUsecase();
+      Tasks = await getAllTaskUsecase();
     } catch (e) {
       throw e.toString();
     }
@@ -82,7 +82,7 @@ class HomePageController extends ChangeNotifier {
 
   update(Task task) async {
     try {
-      await updatePeriodUsecase(task);
+      await updateTaskUsecase(task);
     } catch (e) {
       throw e.toString();
     }
@@ -91,7 +91,7 @@ class HomePageController extends ChangeNotifier {
 
   delete(int id) async {
     try {
-      await deletePeriodUsecase(id);
+      await deleteTaskUsecase(id);
     } catch (e) {
       throw e.toString();
     }

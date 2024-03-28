@@ -12,11 +12,11 @@ class AppModule extends Module {
   @override
   void binds(Injector i) {
     i.addLazySingleton<TaskRepository>(TaskRepositoryImpl.new);
-    i.addLazySingleton<GetAllPeriodUsecase>(GetAllPeriodUsecaseImpl.new);
-    i.addLazySingleton<DeletePeriodUsecase>(DeletePeriodUsecaseImpl.new);
-    i.addLazySingleton<InsertPeriodUsecase>(InsertPeriodUsecaseImpl.new);
-    i.addLazySingleton<UpdatePeriodUsecase>(UpdatePeriodUsecaseImpl.new);
-    i.add(PeriodBloc.new);
+    i.addLazySingleton<GetAllTaskUsecase>(GetAllTaskUsecaseImpl.new);
+    i.addLazySingleton<DeleteTaskUsecase>(DeleteTaskUsecaseImpl.new);
+    i.addLazySingleton<InsertTaskUsecase>(InsertTaskUsecaseImpl.new);
+    i.addLazySingleton<UpdateTaskUsecase>(UpdateTaskUsecaseImpl.new);
+    i.add(TaskBloc.new);
     i.add(HomePageController.new);
   }
 

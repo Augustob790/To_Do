@@ -1,8 +1,8 @@
-class PeriodException implements Exception {
+class TaskException implements Exception {
   final String message;
 
-  PeriodException({required this.message});
+  TaskException({required this.message});
 
-  PeriodException.generic()
+  TaskException.generic()
       : message = 'Não foi possivel acessar o banco de dados.';
 }

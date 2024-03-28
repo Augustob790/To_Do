@@ -4,9 +4,9 @@ import '../../domain/model/task.dart';
 
 abstract class TaskRepository {
   Future<List<Task>> getAllTaks();
-  Future<void> addPeriod(Task task);
-  Future<void> updatePeriod(Task task);
-  Future<void> deletePeriod(int id);
+  Future<void> addTask(Task task);
+  Future<void> updateTask(Task task);
+  Future<void> deleteTask(int id);
 }
 
 class TaskRepositoryImpl implements TaskRepository {
@@ -37,12 +37,12 @@ class TaskRepositoryImpl implements TaskRepository {
         throw e.toString();
       }
     } catch (e) {
-      throw Exception("Error retrieving periods: $e");
+      throw Exception("Error retrieving Tasks: $e");
     }
   }
 
   @override
-  Future<void> addPeriod(Task task) async {
+  Future<void> addTask(Task task) async {
     try {
       String url = "task";
       await dio.post(url, data: task.toMap());
@@ -61,7 +61,7 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<void> updatePeriod(Task task) async {
+  Future<void> updateTask(Task task) async {
     String url = "task?id=eq.${task.id}";
     try {
       await dio.patch(url, data: task.toMap());
@@ -80,7 +80,7 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<void> deletePeriod(int id) async {
+  Future<void> deleteTask(int id) async {
     String url = "task?id=eq.$id";
     Map params = {"id": 'eq.$id'};
     try {

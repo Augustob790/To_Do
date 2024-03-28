@@ -11,17 +11,17 @@ import '../../../widgets/dropdown.dart';
 import '../../../widgets/input_personalized.dart';
 import '../../../widgets/manrope.dart';
 
-class AddNewPeriod extends StatefulWidget {
-  const AddNewPeriod({super.key, required this.controller, required this.add});
+class AddNewTask extends StatefulWidget {
+  const AddNewTask({super.key, required this.controller, required this.add});
 
   final HomePageController controller;
   final dynamic Function() add;
 
   @override
-  State<AddNewPeriod> createState() => _PopUpOpinionsState();
+  State<AddNewTask> createState() => _PopUpOpinionsState();
 }
 
-class _PopUpOpinionsState extends State<AddNewPeriod> {
+class _PopUpOpinionsState extends State<AddNewTask> {
   @override
   Widget build(BuildContext context) {
     return _buildAddProductsModal(context);

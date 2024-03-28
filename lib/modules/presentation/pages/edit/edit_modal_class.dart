@@ -7,12 +7,12 @@ import '../../bloc/task_events.dart';
 import '../../controller/home_page_controller.dart';
 import 'widget/edit_modal.dart';
 
-class EditNewPeriodClass {
+class EditNewTaskClass {
   init({
     required BuildContext context,
     required HomePageController controller,
     required int? id,
-    // required PeriodBloc bloc,
+    // required TaskBloc bloc,
     required TaskFlutterBloc bloc,
   }) async {
     await showDialog(
@@ -22,7 +22,7 @@ class EditNewPeriodClass {
           scrollable: true,
           backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           contentPadding: const EdgeInsets.all(0),
-          content: EditNewPeriod(
+          content: EditNewTask(
               controller: controller,
               add: () async {
                 if (controller.titleController.text.isNotEmpty &&

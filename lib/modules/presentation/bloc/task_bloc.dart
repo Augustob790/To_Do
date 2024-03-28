@@ -5,7 +5,7 @@ import '../../domain/model/task.dart';
 import 'task_events.dart';
 import 'task_states.dart';
 
-class PeriodBloc {
+class TaskBloc {
   final TaskRepository repository;
 
   final StreamController<TaskEvents> _inputTasksController =
@@ -16,7 +16,7 @@ class PeriodBloc {
   Sink<TaskEvents> get inputTasks => _inputTasksController.sink;
   Stream<TaskState> get stream => _outputTasksController.stream;
 
-  PeriodBloc(this.repository) {
+  TaskBloc(this.repository) {
     _inputTasksController.stream.listen(_mapEventToState);
   }
 
@@ -25,11 +25,11 @@ class PeriodBloc {
     if (event is LoadTaskEvents) {
       tasks = await repository.getAllTaks();
     } else if (event is AddTaskEvents) {
-      await repository.addPeriod(event.task);
+      await repository.addTask(event.task);
     } else if (event is UpdateTaskEvents) {
-      await repository.updatePeriod(event.task);
+      await repository.updateTask(event.task);
     } else if (event is DeleteTaskEvents) {
-      await repository.deletePeriod(event.id);
+      await repository.deleteTask(event.id);
     }
     _outputTasksController.add(TasksLoadSucessState(tasks: tasks));
   }

@@ -8,7 +8,7 @@ import '../../controller/home_page_controller.dart';
 import '../edit/edit_modal_class.dart';
 import 'widget/info_modal.dart';
 
-class InfoNewPeriodClass {
+class InfoNewTaskClass {
   init({
     required BuildContext context,
     required HomePageController controller,
@@ -22,7 +22,7 @@ class InfoNewPeriodClass {
             scrollable: true,
             backgroundColor: const Color.fromARGB(255, 255, 255, 255),
             contentPadding: const EdgeInsets.all(0),
-            content: InfoPeriod(
+            content: InfoTask(
               controller: controller,
               excluir: () async {
                 bloc.add(DeleteTaskEvents(id: task.id!));
@@ -32,7 +32,7 @@ class InfoNewPeriodClass {
               editar: () async {
                 Navigator.pop(context);
                 controller.titleController.text = task.title;
-                EditNewPeriodClass().init(
+                EditNewTaskClass().init(
                     context: context,
                     id: task.id,
                     controller: controller,
