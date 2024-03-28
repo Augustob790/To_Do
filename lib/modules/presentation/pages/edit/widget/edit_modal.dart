@@ -17,10 +17,10 @@ class EditNewPeriod extends StatefulWidget {
   final dynamic Function() add;
 
   @override
-  State<EditNewPeriod> createState() => _EditNewPeriodState();
+  State<EditNewPeriod> createState() => _EditNewTaskState();
 }
 
-class _EditNewPeriodState extends State<EditNewPeriod> {
+class _EditNewTaskState extends State<EditNewPeriod> {
   @override
   Widget build(BuildContext context) {
     return _buildAddProductsModal(context);

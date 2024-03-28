@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
-import '../../domain/model/ period_model.dart';
-import '../../domain/usecases/delete_period.dart';
-import '../../domain/usecases/get_all_period.dart';
-import '../../domain/usecases/insert_period.dart';
-import '../../domain/usecases/update_period.dart';
+import '../../domain/model/task.dart';
+import '../../domain/usecases/delete_task.dart';
+import '../../domain/usecases/get_all_task.dart';
+import '../../domain/usecases/insert_task.dart';
+import '../../domain/usecases/update_task.dart';
 
 class HomePageController extends ChangeNotifier {
   final GetAllPeriodUsecase getAllPeriodUsecase;
@@ -36,7 +36,7 @@ class HomePageController extends ChangeNotifier {
     'Categoria 5',
     'Categoria 6',
   ];
-  List<Period> periods = [];
+  List<Task> periods = [];
 
   inicialize() {
     titleController.text = "";
@@ -62,16 +62,16 @@ class HomePageController extends ChangeNotifier {
     notifyListeners();
   }
 
-  insert(Period period) async {
+  insert(Task task) async {
     try {
-      await insertPeriodUsecase(period);
+      await insertPeriodUsecase(task);
     } catch (e) {
       throw e.toString();
     }
     notifyListeners();
   }
 
-  getAllPeriods() async {
+  getAllTaks() async {
     try {
       periods = await getAllPeriodUsecase();
     } catch (e) {
@@ -80,9 +80,9 @@ class HomePageController extends ChangeNotifier {
     notifyListeners();
   }
 
-  update(Period period) async {
+  update(Task task) async {
     try {
-      await updatePeriodUsecase(period);
+      await updatePeriodUsecase(task);
     } catch (e) {
       throw e.toString();
     }

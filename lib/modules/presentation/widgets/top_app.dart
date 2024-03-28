@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../helpers/helpers.dart';
 import 'manrope.dart';
 
 class TopApp extends StatelessWidget {
@@ -40,7 +39,7 @@ class TopApp extends StatelessWidget {
                 Border.all(color: const Color.fromARGB(255, 251, 248, 248), width: 2),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
-          child: Row(
+          child: const Row(
             children: [
               // SizedBox(
               //   height: 44,
@@ -49,8 +48,8 @@ class TopApp extends StatelessWidget {
               //     backgroundImage: AssetImage(Helpers.imageJoao),
               //   ),
               // ),
-              const SizedBox(width: 5),
-              const Manrope(
+              SizedBox(width: 5),
+              Manrope(
                 text: "Editar Foto",
                 color: Colors.black,
                 font: FontWeight.w500,

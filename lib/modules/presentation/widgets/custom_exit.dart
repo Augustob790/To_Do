@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-
-import '../helpers/helpers.dart';
 import 'manrope.dart';
 
 class CustomExit extends StatelessWidget {
@@ -13,15 +11,15 @@ class CustomExit extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 60.0),
       child: Row(
-        children: [
+        children: const [
           CircleAvatar(
             radius: 30,
             // backgroundImage: AssetImage(Helpers.imageJoao),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 5.0),
+            padding: EdgeInsets.only(left: 5.0),
             child: Column(
-              children: const [
+              children: [
                 Manrope(
                   text: "João",
                   color: Color.fromARGB(247, 15, 40, 139),

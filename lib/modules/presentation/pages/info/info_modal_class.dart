@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import '../../../domain/model/ period_model.dart';
-import '../../bloc/flutter_bloc_period.dart';
-import '../../bloc/period_events.dart';
+import '../../../domain/model/task.dart';
+import '../../bloc/bloc_task.dart';
+import '../../bloc/task_events.dart';
 import '../../controller/home_page_controller.dart';
 import '../edit/edit_modal_class.dart';
 import 'widget/info_modal.dart';
@@ -12,9 +12,8 @@ class InfoNewPeriodClass {
   init({
     required BuildContext context,
     required HomePageController controller,
-    required Period period,
-    //required PeriodBloc bloc,
-    required PeriodFlutterBloc bloc,
+    required Task task,
+    required TaskFlutterBloc bloc,
   }) async {
     await showDialog(
       context: context,
@@ -25,27 +24,17 @@ class InfoNewPeriodClass {
             contentPadding: const EdgeInsets.all(0),
             content: InfoPeriod(
               controller: controller,
-              //category: period.category,
-              // meta1: period.meta1,
-              // meta2: period.meta2,
-              // dateInit: period.dataInit,
-              // dateFinal: period.dateFinal,
               excluir: () async {
-                bloc.add(DeletePeriodEvents(id: period.id!));
-                bloc.add(LoadPeriodEvents());
+                bloc.add(DeleteTaskEvents(id: task.id!));
                 Navigator.pop(context);
+                bloc.add(LoadTaskEvents());
               },
               editar: () async {
                 Navigator.pop(context);
-                controller.titleController.text = period.title;
-                // controller.onSelectedCategory(period.category);
-                // controller.dateFinal = DateTime.parse(period.dateFinal);
-                // controller.dateInit = DateTime.parse(period.dataInit);
-                // controller.meta1.text = period.meta1;
-                // controller.meta2.text = period.meta2;
+                controller.titleController.text = task.title;
                 EditNewPeriodClass().init(
                     context: context,
-                    id: period.id,
+                    id: task.id,
                     controller: controller,
                     bloc: bloc);
               },

@@ -6,9 +6,9 @@ import 'package:path_provider/path_provider.dart';
 class DB {
   DB._();
   static final DB instance = DB._();
-  final  String tableName = 'period';
+  final  String tableName = 'task';
   static Database? _database;
-  static const String dbName = 'period.db';
+  static const String dbName = 'task.db';
 
   get database async {
     if (_database != null) return _database;

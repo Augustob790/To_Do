@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import '../../../controller/home_page_controller.dart';
-import '../../../helpers/helpers.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/manrope.dart';
 
@@ -12,27 +11,17 @@ class InfoPeriod extends StatefulWidget {
       required this.controller,
       required this.excluir,
       required this.editar,
-      // required this.category,
-      // required this.meta1,
-      // required this.meta2,
-      // required this.dateInit,
-      // required this.dateFinal,
       });
-  // final String category;
-  // final String meta1;
-  // final String meta2;
-  // final String dateInit;
-  // final String dateFinal;
 
   final HomePageController controller;
   final dynamic Function() excluir;
   final dynamic Function() editar;
 
   @override
-  State<InfoPeriod> createState() => _InfoPeriodState();
+  State<InfoPeriod> createState() => _InfoTaskState();
 }
 
-class _InfoPeriodState extends State<InfoPeriod> {
+class _InfoTaskState extends State<InfoPeriod> {
   @override
   Widget build(BuildContext context) {
     return _buildAddProductsModal(context);

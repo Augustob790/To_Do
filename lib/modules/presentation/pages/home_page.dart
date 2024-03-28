@@ -2,20 +2,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../bloc/flutter_bloc_period.dart';
-import '../bloc/period_events.dart';
-import '../bloc/period_states.dart';
+import '../../../core/const/api.dart';
+import '../bloc/bloc_task.dart';
+import '../bloc/task_events.dart';
+import '../bloc/task_states.dart';
 import '../controller/home_page_controller.dart';
 import '../widgets/add_new_task.dart';
-import '../widgets/custom_container.dart';
-import '../widgets/text_home_page.dart';
 import 'add/add_modal_class.dart';
 import 'info/info_modal_class.dart';
-import '../widgets/add_new_period.dart';
-import '../widgets/custom_exit.dart';
 import '../widgets/custom_list_tile.dart';
 import '../widgets/manrope.dart';
-import '../widgets/top_app.dart';
 
 class NoteListScreen extends StatefulWidget {
   const NoteListScreen({super.key});
@@ -27,14 +23,15 @@ class NoteListScreen extends StatefulWidget {
 class _NoteListScreenState extends State<NoteListScreen> {
   final controller = Modular.get<HomePageController>();
 
-  late final PeriodFlutterBloc bloc;
+  late final TaskFlutterBloc bloc;
 
   @override
   void initState() {
     super.initState();
-    bloc = PeriodFlutterBloc();
-    bloc.add(LoadPeriodEvents());
-    controller.getAllPeriods();
+    Apis();
+    bloc = TaskFlutterBloc();
+    bloc.add(LoadTaskEvents());
+    controller.getAllTaks();
   }
 
   @override
@@ -46,82 +43,49 @@ class _NoteListScreenState extends State<NoteListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.yellow[200],
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Manrope(
-          text: "Configurações",
-          color: Color.fromARGB(255, 12, 11, 11),
-          font: FontWeight.w500,
-          size: 22,
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {},
+        backgroundColor: Colors.yellow,
+        title: Center(
+          child: const Manrope(
+            text: "TO DO",
+            color: Color.fromARGB(255, 12, 11, 11),
+            font: FontWeight.w500,
+            size: 22,
+          ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            BlocBuilder<PeriodFlutterBloc, PeriodState>(
-                bloc: bloc,
-                builder: (context, state) {
-                  final periodsList = state.periods;
-                  return Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TopApp(),
-                        Divider(height: 40),
-                        TextHomePage(text: "Períodos"),
-                        CustomContainerHomePage(
-                          height: 330,
-                          child: ListView.separated(
-                            padding: const EdgeInsets.fromLTRB(5, 5, 5, 10),
-                            shrinkWrap: true,
-                            itemCount: periodsList!.length,
-                            itemBuilder: (context, index) {
-                              final periods = periodsList[index];
-                              return CustomListTile(
-                                period: periods,
-                                onTap: () async {
-                                  controller.titleController.text =
-                                      periods.title;
-                                  InfoNewPeriodClass().init(
-                                    context: context,
-                                    controller: controller,
-                                    period: periods,
-                                    bloc: bloc,
-                                  );
-                                },
-                              );
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return SizedBox(height: 10);
-                            },
-                          ),
-                        ),
-                        SizedBox(height: 12),
-                        // AddNewPeriodButton(
-                        //   controller: controller,
-                        //   onTap: () async {
-                        //     controller.inicialize();
-                        //     AddNewPeriodClass().init(
-                        //         context: context,
-                        //         controller: controller,
-                        //         bloc: bloc);
-                        //   },
-                        //),
-                        SizedBox(height: 10),
-                      ],
-                    ),
-                  );
-                }),
-            //CustomExit(),
-          ],
-        ),
+      body: BlocBuilder<TaskFlutterBloc, TaskState>(
+        bloc: bloc,
+        builder: (context, state) {
+          final tasksList = state.tasks;
+          return Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ListView.builder(
+              padding: const EdgeInsets.fromLTRB(5, 5, 5, 10),
+              shrinkWrap: true,
+              itemCount: tasksList.length,
+              itemBuilder: (context, index) {
+                final tasks = tasksList[index];
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomListTile(
+                    task: tasks,
+                    onTap: () async {
+                      controller.titleController.text = tasks.title;
+                      InfoNewPeriodClass().init(
+                        context: context,
+                        controller: controller,
+                        task: tasks,
+                        bloc: bloc,
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
+          );
+        },
       ),
       floatingActionButton: AddNewTaskButton(
         onTap: () async {
