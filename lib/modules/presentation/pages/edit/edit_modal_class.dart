@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import '../../../domain/model/task.dart';
-import '../../bloc/bloc_task.dart';
-import '../../bloc/task_events.dart';
 import '../../controller/home_page_controller.dart';
 import 'widget/edit_modal.dart';
 
@@ -12,8 +10,6 @@ class EditNewTaskClass {
     required BuildContext context,
     required HomePageController controller,
     required int? id,
-    // required TaskBloc bloc,
-    required TaskFlutterBloc bloc,
   }) async {
     await showDialog(
       context: context,
@@ -26,14 +22,13 @@ class EditNewTaskClass {
               controller: controller,
               add: () async {
                 if (controller.titleController.text.isNotEmpty) {
-                  bloc.add(UpdateTaskEvents(
-                      task: Task(
-                          id: id,
-                          title: controller.titleController.text,
-                          description: controller.descriptionController.text,
-                          dataInit: controller.dateInit.toIso8601String())));
+                  controller.update(Task(
+                      id: id,
+                      title: controller.titleController.text,
+                      description: controller.descriptionController.text,
+                      dataInit: controller.dateInit.toIso8601String()));
                 }
-                bloc.add(LoadTaskEvents());
+                controller.getAllTaks();
                 Navigator.pop(context);
               }),
         );

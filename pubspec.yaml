@@ -39,7 +39,6 @@ dependencies:
   path_provider: ^2.0.2
   table_calendar: ^3.0.8
   provider:
-  flutter_modular: ^6.3.0
   flutter_bloc: ^8.1.5
   dio: 
   flutter_dotenv: ^5.0.2

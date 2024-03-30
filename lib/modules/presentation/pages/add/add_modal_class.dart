@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import '../../../domain/model/task.dart';
-import '../../bloc/bloc_task.dart';
-import '../../bloc/task_events.dart';
 import '../../controller/home_page_controller.dart';
 import 'widget/add_modal.dart';
 
@@ -11,7 +9,6 @@ class AddNewTaskClass {
   init({
     required BuildContext context,
     required HomePageController controller,
-    required TaskFlutterBloc bloc,
   }) async {
     await showDialog(
       context: context,
@@ -24,13 +21,12 @@ class AddNewTaskClass {
               controller: controller,
               add: () async {
                 if (controller.titleController.text.isNotEmpty) {
-                  bloc.add(AddTaskEvents( 
-                  task: Task(
+                  controller.insert(Task(
                     title: controller.titleController.text,
                     description: controller.descriptionController.text,
                     dataInit: controller.dateInit.toIso8601String()
-                  )));
-                  bloc.add(LoadTaskEvents());
+                  ));
+                  controller.getAllTaks();
                   Navigator.pop(context);
                 }
               }),

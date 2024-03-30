@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import '../../../domain/model/task.dart';
-import '../../bloc/bloc_task.dart';
-import '../../bloc/task_events.dart';
 import '../../controller/home_page_controller.dart';
 import '../edit/edit_modal_class.dart';
 import 'widget/info_modal.dart';
@@ -13,7 +11,6 @@ class InfoNewTaskClass {
     required BuildContext context,
     required HomePageController controller,
     required Task task,
-    required TaskFlutterBloc bloc,
   }) async {
     await showDialog(
       context: context,
@@ -26,19 +23,16 @@ class InfoNewTaskClass {
               title: task.title,
               description: task.description,
               excluir: () async {
-                bloc.add(DeleteTaskEvents(id: task.id!));
+                controller.delete(task.id!);
                 Navigator.pop(context);
-                bloc.add(LoadTaskEvents());
+                controller.getAllTaks();
               },
               editar: () async {
                 Navigator.pop(context);
                 controller.titleController.text = task.title;
                 controller.descriptionController.text = task.description;
                 EditNewTaskClass().init(
-                    context: context,
-                    id: task.id,
-                    controller: controller,
-                    bloc: bloc);
+                    context: context, id: task.id, controller: controller);
               },
             ));
       },
