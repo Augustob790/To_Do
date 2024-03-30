@@ -20,12 +20,12 @@ class TaskRepositoryImpl implements TaskRepository {
       final response = await dio.get(url);
       List<Task> tasks = [];
       if (response.statusCode == Apis.statusCodeSuccess) {
-        for (var satisfactionSurvey in response.data) {
-          tasks.add(Task.fromMap(satisfactionSurvey));
+        for (var item in response.data) {
+          tasks.add(Task.fromMap(item));
         }
         return tasks;
       } else {
-        throw "Não foi possível carregar a lista de NPS";
+        throw "Não foi possível carregar a lista de tarefas";
       }
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionTimeout ||

@@ -13,11 +13,11 @@ class Apis {
   static final Apis _apis = Apis._internal();
 
   factory Apis() {
-    // dio.options.baseUrl = baseUrl;
-    // dio.options.headers['apikey'] = apiKey;
-    // dio.options.headers['Authorization'] = 'Bearer $apiKey';
-    // dio.options.headers['Content-Type'] = 'application/json';
-    // dio.options.headers['Prefer'] = 'return=minimal';
+    dio.options.baseUrl = baseUrl;
+    dio.options.headers['apikey'] = apiKey;
+    dio.options.headers['Authorization'] = 'Bearer $apiKey';
+    dio.options.headers['Content-Type'] = 'application/json';
+    dio.options.headers['Prefer'] = 'return=minimal';
     dio.options.connectTimeout = const Duration(seconds: 15);
     dio.options.receiveTimeout = const Duration(seconds: 15);
     addInterceptor();

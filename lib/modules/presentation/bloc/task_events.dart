@@ -4,6 +4,8 @@ abstract class TaskEvents {}
 
 class LoadTaskEvents extends TaskEvents {}
 
+class ToggleBoolEvent extends TaskEvents {}
+
 class AddTaskEvents extends TaskEvents {
   Task task;
 
@@ -25,5 +27,13 @@ class DeleteTaskEvents extends TaskEvents {
 
   DeleteTaskEvents({
     required this.id,
+  });
+}
+
+class UpdateIsDoneEvent extends TaskEvents {
+  Task task;
+
+  UpdateIsDoneEvent({
+    required this.task,
   });
 }

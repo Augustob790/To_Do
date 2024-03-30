@@ -31,6 +31,7 @@ class _NoteListScreenState extends State<TaskListPage> {
     Apis();
     bloc = TaskFlutterBloc();
     bloc.add(LoadTaskEvents());
+    controller.getAllTaks();
   }
 
   @override
@@ -38,6 +39,9 @@ class _NoteListScreenState extends State<TaskListPage> {
     bloc.close();
     super.dispose();
   }
+
+
+  late List<bool> _isCheckedList;
 
   @override
   Widget build(BuildContext context) {

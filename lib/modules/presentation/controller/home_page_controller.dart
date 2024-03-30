@@ -5,7 +5,7 @@ import '../../domain/usecases/get_all_task.dart';
 import '../../domain/usecases/insert_task.dart';
 import '../../domain/usecases/update_task.dart';
 
-class HomePageController {
+class HomePageController extends ChangeNotifier {
   final GetAllTaskUsecase getAllTaskUsecase;
   final DeleteTaskUsecase deleteTaskUsecase;
   final InsertTaskUsecase insertTaskUsecase;
@@ -38,8 +38,8 @@ class HomePageController {
     titleController.text = "";
     descriptionController.text = "";
     dateInit = DateTime.now();
+    notifyListeners();
   }
-
 
   insert(Task task) async {
     try {
@@ -47,6 +47,7 @@ class HomePageController {
     } catch (e) {
       throw e.toString();
     }
+    notifyListeners();
   }
 
   getAllTaks() async {
@@ -55,6 +56,7 @@ class HomePageController {
     } catch (e) {
       throw e.toString();
     }
+    notifyListeners();
   }
 
   update(Task task) async {
@@ -63,6 +65,7 @@ class HomePageController {
     } catch (e) {
       throw e.toString();
     }
+    notifyListeners();
   }
 
   delete(int id) async {
@@ -71,5 +74,6 @@ class HomePageController {
     } catch (e) {
       throw e.toString();
     }
+    notifyListeners();
   }
 }

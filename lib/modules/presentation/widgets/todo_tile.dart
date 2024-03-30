@@ -4,15 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:to_do_list/modules/presentation/helpers/helpers.dart';
 import '../../domain/model/task.dart';
 
-
 class ToDoTile extends StatelessWidget {
   final Task task;
   final Function()? onTap;
+  final Function(bool?)? onChanged;
+  final bool isCompleted;
 
   const ToDoTile({
     super.key,
     this.onTap,
     required this.task,
+    this.onChanged,
+    this.isCompleted = false,
   });
 
   @override
@@ -32,15 +35,15 @@ class ToDoTile extends StatelessWidget {
               Row(
                 children: [
                   Checkbox(
-                    value: false,
-                    onChanged: (context) {},
+                    value: isCompleted,
+                    onChanged: onChanged,
                     activeColor: Colors.black,
                   ),
                   Text(
                     task.title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black,
-                      decoration: false
+                      decoration: isCompleted
                           ? TextDecoration.lineThrough
                           : TextDecoration.none,
                     ),

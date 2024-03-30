@@ -43,6 +43,7 @@ dependencies:
   flutter_bloc: ^8.1.5
   dio: 
   flutter_dotenv: ^5.0.2
+  
 
 dev_dependencies:
   flutter_test:

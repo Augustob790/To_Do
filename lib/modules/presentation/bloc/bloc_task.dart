@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../data/repositories/task_repository.dart';
 import 'task_events.dart';
 import 'task_states.dart';
@@ -22,6 +21,10 @@ class TaskFlutterBloc extends Bloc<TaskEvents, TaskState> {
 
     on<DeleteTaskEvents>(((event, emit) {
       emit(TasksDeleteSucessState(id: repository.deleteTask(event.id)));
+    }));
+
+     on<UpdateIsDoneEvent>(((event, emit) {
+      emit(TasksIsDoneSucessState(task: repository.updateTask(event.task)));
     }));
   }
 }
