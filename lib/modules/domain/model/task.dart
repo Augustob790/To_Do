@@ -14,8 +14,8 @@ class Task {
   Map<String, dynamic> toMap() {
     return {
       'name': title,
-         'description': description,
-            'data_init': dataInit,
+      'description': description,
+      'data_init': dataInit,
     };
   }
 
@@ -23,6 +23,8 @@ class Task {
     return Task(
       id: map['id'] ?? "",
       title: map['name'] ?? "",
+      dataInit: map['data_init'] ?? "",
+      description: map['description'] ?? "",
     );
   }
 }
