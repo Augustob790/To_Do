@@ -46,7 +46,8 @@ class Helpers {
     String month = months[date.month - 1]; // Adjusting month index
     String year = date.year.toString();
 
-    return "$day de $month de $year";
+        return "${noOneNumber(day)}/${noOneNumber(month)}/$year";
+
   }
 
   static String formatDateForBRDate(DateTime dateTime) {

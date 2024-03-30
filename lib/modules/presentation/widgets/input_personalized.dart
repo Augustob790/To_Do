@@ -22,7 +22,8 @@ class InputPersonalized extends StatelessWidget {
     this.obscureText = false,
     this.height = 60.0,
     this.borderRadius = const BorderRadius.all(Radius.circular(5)),
-    this.border, required this.fontSize,
+    this.border,
+    required this.fontSize,
   });
   final Widget? image;
   final double height;
@@ -75,7 +76,7 @@ class InputPersonalized extends StatelessWidget {
                   controller: controller,
                   style: TextStyle(
                       fontFamily: 'Manrope',
-                      color: const Color.fromARGB(255, 8, 1, 1),
+                      color: Colors.black,
                       fontWeight: FontWeight.w400,
                       fontSize: fontSize),
                   inputFormatters: inputFormatters,
@@ -88,9 +89,9 @@ class InputPersonalized extends StatelessWidget {
                     disabledBorder: InputBorder.none,
                     hintText: hintText,
                     labelText: labelText,
-                    labelStyle:  TextStyle(
+                    labelStyle: TextStyle(
                         fontFamily: 'Nunito',
-                        color: const Color.fromARGB(255, 132, 132, 132),
+                        color: Colors.black,
                         fontSize: fontSize),
                     counterText: "",
                   ),

@@ -23,7 +23,8 @@ class InfoNewTaskClass {
             backgroundColor: const Color.fromARGB(255, 255, 255, 255),
             contentPadding: const EdgeInsets.all(0),
             content: InfoTask(
-              controller: controller,
+              title: task.title,
+              description: task.description,
               excluir: () async {
                 bloc.add(DeleteTaskEvents(id: task.id!));
                 Navigator.pop(context);
@@ -32,6 +33,7 @@ class InfoNewTaskClass {
               editar: () async {
                 Navigator.pop(context);
                 controller.titleController.text = task.title;
+                controller.descriptionController.text = task.description;
                 EditNewTaskClass().init(
                     context: context,
                     id: task.id,

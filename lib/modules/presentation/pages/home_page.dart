@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:to_do_list/modules/presentation/widgets/todo_tile.dart';
 import '../../../core/const/api.dart';
 import '../bloc/bloc_task.dart';
 import '../bloc/task_events.dart';
@@ -10,17 +11,16 @@ import '../controller/home_page_controller.dart';
 import '../widgets/add_new_task.dart';
 import 'add/add_modal_class.dart';
 import 'info/info_modal_class.dart';
-import '../widgets/custom_list_tile.dart';
 import '../widgets/manrope.dart';
 
-class NoteListScreen extends StatefulWidget {
-  const NoteListScreen({super.key});
+class TaskListPage extends StatefulWidget {
+  const TaskListPage({super.key});
 
   @override
   _NoteListScreenState createState() => _NoteListScreenState();
 }
 
-class _NoteListScreenState extends State<NoteListScreen> {
+class _NoteListScreenState extends State<TaskListPage> {
   final controller = Modular.get<HomePageController>();
 
   late final TaskFlutterBloc bloc;
@@ -31,7 +31,6 @@ class _NoteListScreenState extends State<NoteListScreen> {
     Apis();
     bloc = TaskFlutterBloc();
     bloc.add(LoadTaskEvents());
-    controller.getAllTaks();
   }
 
   @override
@@ -56,23 +55,24 @@ class _NoteListScreenState extends State<NoteListScreen> {
         ),
       ),
       body: BlocBuilder<TaskFlutterBloc, TaskState>(
-        bloc: bloc,
-        builder: (context, state) {
-          final tasksList = state.tasks;
-          return Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: ListView.builder(
-              padding: const EdgeInsets.fromLTRB(5, 5, 5, 10),
-              shrinkWrap: true,
-              itemCount: tasksList.length,
-              itemBuilder: (context, index) {
-                final tasks = tasksList[index];
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CustomListTile(
+          bloc: bloc,
+          builder: (context, state) {
+            if (state is TaskInitialState) {
+              return const Center(
+                  child: CircularProgressIndicator(
+                color: Colors.black,
+              ));
+            } else if (state is TasksLoadSucessState) {
+              final tasksList = state.tasks;
+              return ListView.builder(
+                padding: const EdgeInsets.fromLTRB(5, 5, 5, 10),
+                shrinkWrap: true,
+                itemCount: tasksList.length,
+                itemBuilder: (context, index) {
+                  final tasks = tasksList[index];
+                  return ToDoTile(
                     task: tasks,
                     onTap: () async {
-                      controller.titleController.text = tasks.title;
                       InfoNewTaskClass().init(
                         context: context,
                         controller: controller,
@@ -80,13 +80,13 @@ class _NoteListScreenState extends State<NoteListScreen> {
                         bloc: bloc,
                       );
                     },
-                  ),
-                );
-              },
-            ),
-          );
-        },
-      ),
+                  );
+                },
+              );
+            } else {
+              return Container();
+            }
+          }),
       floatingActionButton: AddNewTaskButton(
         onTap: () async {
           controller.inicialize();

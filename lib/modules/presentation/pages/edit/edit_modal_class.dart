@@ -25,13 +25,13 @@ class EditNewTaskClass {
           content: EditNewTask(
               controller: controller,
               add: () async {
-                if (controller.titleController.text.isNotEmpty &&
-                    controller.dropdownCategoryValue.isNotEmpty) {
+                if (controller.titleController.text.isNotEmpty) {
                   bloc.add(UpdateTaskEvents(
                       task: Task(
-                    id: id,
-                    title: controller.titleController.text,
-                  )));
+                          id: id,
+                          title: controller.titleController.text,
+                          description: controller.descriptionController.text,
+                          dataInit: controller.dateInit.toIso8601String())));
                 }
                 bloc.add(LoadTaskEvents());
                 Navigator.pop(context);

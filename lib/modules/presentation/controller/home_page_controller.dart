@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
 import '../../domain/model/task.dart';
 import '../../domain/usecases/delete_task.dart';
 import '../../domain/usecases/get_all_task.dart';
 import '../../domain/usecases/insert_task.dart';
 import '../../domain/usecases/update_task.dart';
 
-class HomePageController extends ChangeNotifier {
+class HomePageController {
   final GetAllTaskUsecase getAllTaskUsecase;
   final DeleteTaskUsecase deleteTaskUsecase;
   final InsertTaskUsecase insertTaskUsecase;
@@ -20,11 +19,8 @@ class HomePageController extends ChangeNotifier {
   });
 
   final TextEditingController titleController = TextEditingController();
-  final TextEditingController meta1 = TextEditingController();
-  final TextEditingController meta2 = TextEditingController();
-  late Database db;
-  static const String tableName = 'notes';
-  String dropdownCategoryValue = "Categoria";
+  final TextEditingController descriptionController = TextEditingController();
+
   DateTime dateFinal = DateTime.now();
   DateTime dateInit = DateTime.now();
   List<String> categoria = [
@@ -36,31 +32,14 @@ class HomePageController extends ChangeNotifier {
     'Categoria 5',
     'Categoria 6',
   ];
-  List<Task> Tasks = [];
+  List<Task> tasks = [];
 
   inicialize() {
     titleController.text = "";
-    meta1.text = "";
-    meta2.text = "";
-    dropdownCategoryValue = "Categoria";
+    descriptionController.text = "";
     dateInit = DateTime.now();
-    dateFinal = DateTime.now();
   }
 
-  onSelectedCategory(String category) {
-    dropdownCategoryValue = category;
-    notifyListeners();
-  }
-
-  initializeInit(DateTime dateTime) async {
-    dateInit = dateTime;
-    notifyListeners();
-  }
-
-  initializeFinal(DateTime dateTime) async {
-    dateFinal = dateTime;
-    notifyListeners();
-  }
 
   insert(Task task) async {
     try {
@@ -68,16 +47,14 @@ class HomePageController extends ChangeNotifier {
     } catch (e) {
       throw e.toString();
     }
-    notifyListeners();
   }
 
   getAllTaks() async {
     try {
-      Tasks = await getAllTaskUsecase();
+      tasks = await getAllTaskUsecase();
     } catch (e) {
       throw e.toString();
     }
-    notifyListeners();
   }
 
   update(Task task) async {
@@ -86,7 +63,6 @@ class HomePageController extends ChangeNotifier {
     } catch (e) {
       throw e.toString();
     }
-    notifyListeners();
   }
 
   delete(int id) async {
@@ -95,6 +71,5 @@ class HomePageController extends ChangeNotifier {
     } catch (e) {
       throw e.toString();
     }
-    notifyListeners();
   }
 }

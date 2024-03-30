@@ -11,7 +11,6 @@ class AddNewTaskClass {
   init({
     required BuildContext context,
     required HomePageController controller,
-    //required TaskBloc bloc,
     required TaskFlutterBloc bloc,
   }) async {
     await showDialog(
@@ -24,11 +23,12 @@ class AddNewTaskClass {
           content: AddNewTask(
               controller: controller,
               add: () async {
-                if (controller.titleController.text.isNotEmpty &&
-                    controller.dropdownCategoryValue.isNotEmpty) {
-                  bloc.add(AddTaskEvents(
-                    task: Task(
+                if (controller.titleController.text.isNotEmpty) {
+                  bloc.add(AddTaskEvents( 
+                  task: Task(
                     title: controller.titleController.text,
+                    description: controller.descriptionController.text,
+                    dataInit: controller.dateInit.toIso8601String()
                   )));
                   bloc.add(LoadTaskEvents());
                   Navigator.pop(context);
