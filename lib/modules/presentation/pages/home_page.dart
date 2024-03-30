@@ -26,7 +26,8 @@ class _NoteListScreenState extends State<TaskListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomePageController>(builder: (context, controller, child) {
+    return Consumer<HomePageController>(
+    builder: (context, controller, child) {
       final tasksList = controller.tasks;
       return Scaffold(
         backgroundColor: Colors.yellow[200],
@@ -48,6 +49,7 @@ class _NoteListScreenState extends State<TaskListPage> {
           itemBuilder: (context, index) {
             final tasks = tasksList[index];
             return ToDoTile(
+            controller: controller,
               task: tasks,
               onTap: () async {
                 InfoNewTaskClass().init(

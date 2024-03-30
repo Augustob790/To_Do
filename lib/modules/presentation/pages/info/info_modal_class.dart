@@ -23,9 +23,9 @@ class InfoNewTaskClass {
               title: task.title,
               description: task.description,
               excluir: () async {
-                controller.delete(task.id!);
+                await controller.delete(task.id!);
                 Navigator.pop(context);
-                controller.getAllTaks();
+                await controller.getAllTaks();
               },
               editar: () async {
                 Navigator.pop(context);

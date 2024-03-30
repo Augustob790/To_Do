@@ -20,13 +20,14 @@ class AddNewTaskClass {
           content: AddNewTask(
               controller: controller,
               add: () async {
-                if (controller.titleController.text.isNotEmpty) {
-                  controller.insert(Task(
+                final Task task = Task(
                     title: controller.titleController.text,
                     description: controller.descriptionController.text,
-                    dataInit: controller.dateInit.toIso8601String()
-                  ));
-                  controller.getAllTaks();
+                    dataInit: controller.dateInit.toIso8601String());
+
+                if (controller.titleController.text.isNotEmpty) {
+                  await controller.insert(task);
+                  await controller.getAllTaks();
                   Navigator.pop(context);
                 }
               }),
