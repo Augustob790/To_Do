@@ -9,12 +9,12 @@ class AddNewTaskButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: onTap,
-      // backgroundColor: const Color.fromARGB(247, 15, 40, 139),
-      backgroundColor: Colors.yellow,
+      backgroundColor: Colors.grey.shade800,
       shape: const CircleBorder(),
       child: const Icon(
         Icons.add,
-        color: Colors.black,
+        size: 38,
+        color: Colors.white,
       ),
     );
   }

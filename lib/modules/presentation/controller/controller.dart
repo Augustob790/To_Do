@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import '../../../core/const/colors.dart';
 import '../../domain/model/task.dart';
 import '../../domain/usecases/delete_task.dart';
 import '../../domain/usecases/get_all_task.dart';
@@ -22,6 +25,12 @@ class Controller extends ChangeNotifier {
   List<Task> tasks = [];
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+
+
+  getRandomColor() {
+    Random random = Random();
+    return backgroundColors[random.nextInt(backgroundColors.length)];
+  }
 
   void isDone(int index) {
     tasks[index].isDone = !tasks[index].isDone;

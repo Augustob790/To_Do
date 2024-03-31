@@ -29,15 +29,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return DependecyInjectionsProvider(
+    return const DependecyInjectionsProvider(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'TO DO',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: const TaskListPage(),
+        home: TaskListPage(),
       ),
     );
   }
