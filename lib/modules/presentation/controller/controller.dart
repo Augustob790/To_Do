@@ -5,23 +5,25 @@ import '../../domain/usecases/get_all_task.dart';
 import '../../domain/usecases/insert_task.dart';
 import '../../domain/usecases/update_task.dart';
 
-class HomePageController extends ChangeNotifier {
+class Controller extends ChangeNotifier {
   final GetAllTaskUsecase getAllTaskUsecase;
   final DeleteTaskUsecase deleteTaskUsecase;
   final InsertTaskUsecase insertTaskUsecase;
   final UpdateTaskUsecase updateTaskUsecase;
 
-  HomePageController({
+  Controller({
     required this.getAllTaskUsecase,
     required this.deleteTaskUsecase,
     required this.insertTaskUsecase,
     required this.updateTaskUsecase,
   });
 
+  DateTime dateInit = DateTime.now();
+  List<Task> tasks = [];
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
 
-  void toggleIsDone(int index) {
+  void isDone(int index) {
     tasks[index].isDone = !tasks[index].isDone;
     update(tasks[index]);
     notifyListeners();
@@ -32,19 +34,6 @@ class HomePageController extends ChangeNotifier {
     tasks.removeAt(index);
     notifyListeners();
   }
-
-  DateTime dateFinal = DateTime.now();
-  DateTime dateInit = DateTime.now();
-  List<String> categoria = [
-    'Categoria',
-    'Categoria 1',
-    'Categoria 2',
-    'Categoria 3',
-    'Categoria 4',
-    'Categoria 5',
-    'Categoria 6',
-  ];
-  List<Task> tasks = [];
 
   inicialize() {
     titleController.text = "";

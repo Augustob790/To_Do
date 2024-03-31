@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list/core/widgets/todo_tile.dart';
-import '../controller/home_page_controller.dart';
+import '../controller/controller.dart';
 import '../../../core/widgets/add_new_task.dart';
 import 'add/add_modal_class.dart';
 import 'info/info_modal_class.dart';
@@ -19,13 +19,13 @@ class _NoteListScreenState extends State<TaskListPage> {
   @override
   void initState() {
     super.initState();
-    final controller = Provider.of<HomePageController>(context, listen: false);
+    final controller = Provider.of<Controller>(context, listen: false);
     controller.getAllTaks();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomePageController>(builder: (context, controller, child) {
+    return Consumer<Controller>(builder: (context, controller, child) {
       final tasksList = controller.tasks;
       return Scaffold(
         backgroundColor: Colors.yellow[200],
@@ -51,7 +51,7 @@ class _NoteListScreenState extends State<TaskListPage> {
               task: tasks,
               isCompleted: tasks.isDone,
               onChanged: (value) {
-                controller.toggleIsDone(index);
+                controller.isDone(index);
               },
               onDismissed: (_) {
                 controller.onDismissed(index);

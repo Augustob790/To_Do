@@ -1,13 +1,13 @@
 // ignore_for_file: must_be_immutable, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:to_do_list/modules/presentation/controller/home_page_controller.dart';
-import 'package:to_do_list/modules/presentation/helpers/helpers.dart';
+import 'package:to_do_list/modules/presentation/controller/controller.dart';
+import 'package:to_do_list/core/helpers/helpers.dart';
 import '../../modules/domain/model/task.dart';
 
 class ToDoTile extends StatefulWidget {
   final Task task;
-  final HomePageController controller;
+  final Controller controller;
   final Function()? onTap;
   final Function(bool?)? onChanged;
   final Function(DismissDirection)? onDismissed;

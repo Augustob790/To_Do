@@ -4,5 +4,5 @@ class TaskException implements Exception {
   TaskException({required this.message});
 
   TaskException.generic()
-      : message = 'Não foi possivel acessar o banco de dados.';
+      : message = 'Não foi possivel se conectar com o servidor!.';
 }

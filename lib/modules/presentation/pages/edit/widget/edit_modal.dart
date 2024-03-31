@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import '../../../controller/home_page_controller.dart';
+import '../../../controller/controller.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/input_personalized.dart';
 import '../../../../../core/widgets/manrope.dart';
@@ -9,7 +9,7 @@ import '../../../../../core/widgets/manrope.dart';
 class EditNewTask extends StatefulWidget {
   const EditNewTask({super.key, required this.controller, required this.add});
 
-  final HomePageController controller;
+  final Controller controller;
   final dynamic Function() add;
 
   @override

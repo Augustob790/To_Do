@@ -20,16 +20,12 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-
-
 class _MyAppState extends State<MyApp> {
-
-@override
-void initState() {
-  super.initState();
-      Apis();
-
-}
+  @override
+  void initState() {
+    super.initState();
+    Apis();
+  }
 
   @override
   Widget build(BuildContext context) {

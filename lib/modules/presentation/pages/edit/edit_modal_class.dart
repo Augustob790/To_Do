@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import '../../../domain/model/task.dart';
-import '../../controller/home_page_controller.dart';
+import '../../controller/controller.dart';
 import 'widget/edit_modal.dart';
 
 class EditNewTaskClass {
   init({
     required BuildContext context,
-    required HomePageController controller,
+    required Controller controller,
     required int? id,
   }) async {
     await showDialog(

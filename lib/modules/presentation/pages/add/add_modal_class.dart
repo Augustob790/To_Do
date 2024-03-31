@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import '../../../domain/model/task.dart';
-import '../../controller/home_page_controller.dart';
+import '../../controller/controller.dart';
 import 'widget/add_modal.dart';
 
 class AddNewTaskClass {
   init({
     required BuildContext context,
-    required HomePageController controller,
+    required Controller controller,
   }) async {
     await showDialog(
       context: context,
