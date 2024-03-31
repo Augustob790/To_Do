@@ -5,7 +5,7 @@ import '../../domain/usecases/delete_task.dart';
 import '../../domain/usecases/get_all_task.dart';
 import '../../domain/usecases/insert_task.dart';
 import '../../domain/usecases/update_task.dart';
-import '../controller/home_page_controller.dart';
+import '../controller/controller.dart';
 
 class DependecyInjectionsProvider extends StatelessWidget {
   final Widget? child;
@@ -22,19 +22,19 @@ class DependecyInjectionsProvider extends StatelessWidget {
             create: (context) => GetAllTaskUsecaseImpl(
                 repository: context.read<TaskRepository>())),
         Provider<InsertTaskUsecase>(
-          create: (context) => InsertTaskUsecaseImpl(
-              repository: context.read<TaskRepository>()),
+          create: (context) =>
+              InsertTaskUsecaseImpl(repository: context.read<TaskRepository>()),
         ),
         Provider<UpdateTaskUsecase>(
-          create: (context) => UpdateTaskUsecaseImpl(
-              repository: context.read<TaskRepository>()),
+          create: (context) =>
+              UpdateTaskUsecaseImpl(repository: context.read<TaskRepository>()),
         ),
         Provider<DeleteTaskUsecase>(
-          create: (context) => DeleteTaskUsecaseImpl(
-              repository: context.read<TaskRepository>()),
+          create: (context) =>
+              DeleteTaskUsecaseImpl(repository: context.read<TaskRepository>()),
         ),
         ChangeNotifierProvider(
-          create: (context) => HomePageController(
+          create: (context) => Controller(
             getAllTaskUsecase: context.read<GetAllTaskUsecase>(),
             insertTaskUsecase: context.read<InsertTaskUsecase>(),
             updateTaskUsecase: context.read<UpdateTaskUsecase>(),
