@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../domain/model/task.dart';
+import '../../modules/domain/model/task.dart';
 import 'manrope.dart';
 
 class CustomListTile extends StatelessWidget {

@@ -1,13 +1,12 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list/modules/presentation/widgets/todo_tile.dart';
-import '../../../core/const/api.dart';
+import 'package:to_do_list/core/widgets/todo_tile.dart';
 import '../controller/home_page_controller.dart';
-import '../widgets/add_new_task.dart';
+import '../../../core/widgets/add_new_task.dart';
 import 'add/add_modal_class.dart';
 import 'info/info_modal_class.dart';
-import '../widgets/manrope.dart';
+import '../../../core/widgets/manrope.dart';
 
 class TaskListPage extends StatefulWidget {
   const TaskListPage({super.key});
@@ -26,8 +25,7 @@ class _NoteListScreenState extends State<TaskListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomePageController>(
-    builder: (context, controller, child) {
+    return Consumer<HomePageController>(builder: (context, controller, child) {
       final tasksList = controller.tasks;
       return Scaffold(
         backgroundColor: Colors.yellow[200],
@@ -49,8 +47,15 @@ class _NoteListScreenState extends State<TaskListPage> {
           itemBuilder: (context, index) {
             final tasks = tasksList[index];
             return ToDoTile(
-            controller: controller,
+              controller: controller,
               task: tasks,
+              isCompleted: tasks.isDone,
+              onChanged: (value) {
+                controller.toggleIsDone(index);
+              },
+              onDismissed: (_) {
+                controller.onDismissed(index);
+              },
               onTap: () async {
                 InfoNewTaskClass().init(
                   context: context,

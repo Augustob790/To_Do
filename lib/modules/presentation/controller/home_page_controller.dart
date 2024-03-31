@@ -21,6 +21,18 @@ class HomePageController extends ChangeNotifier {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
 
+  void toggleIsDone(int index) {
+    tasks[index].isDone = !tasks[index].isDone;
+    update(tasks[index]);
+    notifyListeners();
+  }
+
+  void onDismissed(int index) {
+    delete(tasks[index].id!);
+    tasks.removeAt(index);
+    notifyListeners();
+  }
+
   DateTime dateFinal = DateTime.now();
   DateTime dateInit = DateTime.now();
   List<String> categoria = [
@@ -38,7 +50,6 @@ class HomePageController extends ChangeNotifier {
     titleController.text = "";
     descriptionController.text = "";
     dateInit = DateTime.now();
-    notifyListeners();
   }
 
   insert(Task task) async {

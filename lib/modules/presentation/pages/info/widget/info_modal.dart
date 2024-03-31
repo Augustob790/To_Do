@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/manrope.dart';
+import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../core/widgets/manrope.dart';
 
 class InfoTask extends StatefulWidget {
   const InfoTask({

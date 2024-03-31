@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import '../../../controller/home_page_controller.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/input_personalized.dart';
-import '../../../widgets/manrope.dart';
+import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../core/widgets/input_personalized.dart';
+import '../../../../../core/widgets/manrope.dart';
 
 class AddNewTask extends StatefulWidget {
   const AddNewTask({super.key, required this.controller, required this.add});
