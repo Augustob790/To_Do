@@ -15,7 +15,7 @@ class Task {
 
   Map<String, dynamic> toMap() {
     return {
-      'name': title,
+      'title': title,
       'description': description,
       'date_init': dataInit,
       'is_done': isDone,
@@ -25,7 +25,7 @@ class Task {
   static Task fromMap(Map<String, dynamic> map) {
     return Task(
       id: map['id'] ?? "",
-      title: map['name'] ?? "",
+      title: map['title'] ?? "",
       dataInit: map['date_init'] ?? "",
       description: map['description'] ?? "",
       isDone: map['is_done'] ?? false,

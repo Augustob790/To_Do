@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../../../core/const/api.dart';
 import '../../domain/model/task.dart';
 
@@ -11,10 +12,11 @@ abstract class TaskRepository {
 
 class TaskRepositoryImpl implements TaskRepository {
   late Dio dio = Apis.dio;
+  String table = dotenv.get('table');
 
   @override
   Future<List<Task>> getAllTaks() async {
-    String url = "task";
+    String url = table;
 
     try {
       final response = await dio.get(url);
@@ -44,7 +46,7 @@ class TaskRepositoryImpl implements TaskRepository {
   @override
   Future<void> addTask(Task task) async {
     try {
-      String url = "task";
+      String url = table;
       await dio.post(url, data: task.toMap());
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionTimeout ||
@@ -62,7 +64,7 @@ class TaskRepositoryImpl implements TaskRepository {
 
   @override
   Future<void> updateTask(Task task) async {
-    String url = "task?id=eq.${task.id}";
+    String url = "$table?id=eq.${task.id}";
     try {
       await dio.patch(url, data: task.toMap());
     } on DioException catch (e) {
@@ -81,7 +83,7 @@ class TaskRepositoryImpl implements TaskRepository {
 
   @override
   Future<void> deleteTask(int id) async {
-    String url = "task?id=eq.$id";
+    String url = "$table?id=eq.$id";
     Map params = {"id": 'eq.$id'};
     try {
       await dio.delete(url, data: params);
