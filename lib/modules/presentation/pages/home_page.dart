@@ -1,7 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list/core/const/colors.dart';
 import 'package:to_do_list/modules/domain/model/task.dart';
 import '../../../core/widgets/card_tile.dart';
 import '../controller/controller.dart';
