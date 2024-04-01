@@ -1,4 +1,4 @@
-<h1 align="center">
+ <h1 align="center">
     To Do
 </h1>
 
@@ -34,7 +34,7 @@
 <h3 align="center">
     <img alt="home" src="github/assets/home.png" width="20%">
     <img alt="outflows" src="github/assets/add.png" width="20%">
-    <img alt="entries" src="github/assets/edit.png" width="22%">
+    <img alt="entries" src="github/assets/edit.png" width="21%">
 </h3>
 
 
