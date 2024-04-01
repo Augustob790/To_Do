@@ -13,7 +13,7 @@
     <img alt="Supbase" src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white">
   </a>
 </p>
-+
+
 ## To Do
 
 - [About](#about)
@@ -23,7 +23,7 @@
 
 <a id="about"></a>
 
-- ## About
+## About
 
 <strong>To Do:</strong> App designed to save your daily tasks
 
@@ -45,7 +45,7 @@
 
 <a id="techs"></a>
 
-## :diamonds: Techs
+## Techs
 
 The project was developed with the technologies below:
 
