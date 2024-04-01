@@ -33,15 +33,10 @@
 
 <h3 align="center">
     <img alt="home" src="github/assets/home.png" width="20%">
-    <img alt="outflows" src="github/assets/search.png" width="20%">
-    <img alt="entries" src="github/assets/poke_listing.png" width="20%">
+    <img alt="outflows" src="github/assets/add.png" width="20%">
+    <img alt="entries" src="github/assets/edit.png" width="20%">
 </h3>
-<h3 align="center">
-    <img alt="home" src="github/assets/section_about.png" width="20%">
-    <img alt="entries" src="github/assets/section_evolution.png" width="20%">
-    <img alt="outflows" src="github/assets/section_moves.png" width="20%">
-    <img alt="add" src="github/assets/section_stats.png" width="20%">
-</h3>
+
 
 <a id="techs"></a>
 
