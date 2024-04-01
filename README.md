@@ -64,10 +64,10 @@ The project was developed with the technologies below:
   $ cd to_do_list
 ```
 
-3. Execute:
+3. Execute in terminal:
 
 ```sh
-  $ flutter run
+  $ flutter pub get && flutter run      
 ```
 
 ## License
