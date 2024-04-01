@@ -70,6 +70,16 @@ The project was developed with the technologies below:
   $ flutter pub get && flutter run      
 ```
 
+## Back-End
+
+1. Create a Supabase account or log in with an existing account
+
+2. Create a table named "task" and add the following fields: id(int8 and primary key), title(varchar), description(varchar), date_init(varchar) and is_done(boolean).
+   
+3. Enable auth policy/RLS to allow public reading and writing and RealTime to On.
+
+4. Inside the .env file in the project root, add the Api URL, Api Key and table name
+
 ## License
 
 This project is under MIT LICENSE. for more details follow the link: [LICENSE](LICENSE).
