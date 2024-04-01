@@ -55,19 +55,19 @@ The project was developed with the technologies below:
 1. Clone :
 
 ```sh
-  $ git clone https://github.com/Augustob790/To_Do.git
+  git clone https://github.com/Augustob790/To_Do.git
 ```
 
 2. Go to folder:
 
 ```sh
-  $ cd To_Do
+  cd To_Do
 ```
 
 3. Execute in terminal:
 
 ```sh
-  $ flutter pub get && flutter run      
+  flutter pub get && flutter run      
 ```
 
 ## Back-End
