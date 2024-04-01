@@ -61,7 +61,7 @@ The project was developed with the technologies below:
 2. Go to folder:
 
 ```sh
-  $ cd to_do_list
+  $ cd To_Do
 ```
 
 3. Execute in terminal:
