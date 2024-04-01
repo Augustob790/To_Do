@@ -34,7 +34,7 @@
 <h3 align="center">
     <img alt="home" src="github/assets/home.png" width="20%">
     <img alt="outflows" src="github/assets/add.png" width="20%">
-    <img alt="entries" src="github/assets/edit.png" width="40%">
+    <img alt="entries" src="github/assets/edit.png" width="25%">
 </h3>
 
 
