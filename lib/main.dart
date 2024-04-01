@@ -2,14 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'core/const/api.dart';
 import 'modules/presentation/pages/home_page.dart';
 import 'modules/presentation/provider/dependency_injections.provider.dart';
 
 void main() async {
   await dotenv.load();
-  await initializeDateFormatting();
   runApp(const MyApp());
 }
 
