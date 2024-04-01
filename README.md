@@ -55,7 +55,7 @@ The project was developed with the technologies below:
 1. Clone :
 
 ```sh
-  $ git clone https://github.com/Augustob790/to-do-list.git
+  $ git clone https://github.com/Augustob790/To_Do.git
 ```
 
 2. Go to folder:
